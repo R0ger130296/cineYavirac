@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-const API_LOGIN = "http://localhost:8001/server/login";
+const API_LOGIN = "http://localhost:4000/api/login";
 
 class Login extends Component {
   constructor(props){
