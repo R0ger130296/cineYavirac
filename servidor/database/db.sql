@@ -1,43 +1,43 @@
-create database scooter;
-use scooter;
-create table tipo_reservas(
-id int auto_increment not null primary key,
-descripcion char(150),
-precio decimal(3,2),
-hora time
-);
-
-create table scoters(
-id int auto_increment not null  primary key,
-descripcion char(150),
-estado boolean,
-codigo char(150)
-);
-
-create table tipo_personas(
-id int auto_increment not null primary key,
-tipoPersonaNombre char(150)
-);
-
+create database cine;
+use cine;
 create table personas(
 id int auto_increment not null primary key,
-nombres char(150),
-apellidos char(150),
-direccion char(150),
-password char(150),
-email char (150),
-tipoPersonaNombre int, 
-foreign key (tipoPersonaNombre) references tipo_personas(id)
+nombre char (150),
+correo char(150),
+clave char (150),
+rol char(150)
 );
 
-create table detalle_reservas(
+create table peliculas (
 id int auto_increment not null primary key,
+resumen char(150),
+categoria char (150),
+valorBoleto char(150),
+imagen text,
+estado bool
+);
+
+create table horarios(
+id int auto_increment not null primary key,
+hora date
+);
+
+create table salas(
+id int auto_increment not null primary key,
+nombre char (150),
 descripcion char(150),
-precio_total decimal (3,2),
+idpelicula int,
+foreign key (idpelicula) references peliculas(id),
+idhorario int,
+foreign key (idhorario) references horarios(id)
+);
+
+create table compras(
+id int auto_increment not null primary key,
+numero_boletos char(150),
 idpersona int,
 foreign key (idpersona) references personas(id),
-idscooter int,
-foreign key (idscooter) references scoters(id),
-idTipoReserva int,
-foreign key (idTipoReserva) references tipo_reservas(id)
+idsala int,
+foreign key (idsala) references salas(id)
 );
+

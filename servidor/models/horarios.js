@@ -2,13 +2,13 @@ const Sequelize = require("sequelize");
 
 const db = require("../database/db");
 
-module.exports = db.sequelize.define("tipo_personas", {
+module.exports = db.sequelize.define("horarios", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  tipoPersonaNombre: {
-    type: Sequelize.STRING
+  hora: {
+    type: Sequelize.DATE
   }
 });

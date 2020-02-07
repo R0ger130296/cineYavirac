@@ -2,33 +2,22 @@ const Sequelize = require("sequelize");
 
 const db = require("../database/db");
 
-const Tpersonas= require("./tipo_personas")
 module.exports = db.sequelize.define("personas", {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  nombres: {
+  nombre: {
     type: Sequelize.STRING
   },
-  apellidos:{
+  correo:{
       type: Sequelize.STRING
   },
-  direccion:{
+  clave:{
       type:Sequelize.STRING
   },
-  password:{
+  rol:{
       type:Sequelize.STRING
-  },
-  email:{
-      type:Sequelize.STRING
-  },
-  tipoPersonaNombre:{
-      type:Sequelize.INTEGER,
-      references:{
-          model:Tpersonas,
-          key:'id'
-      }
   }
 });
