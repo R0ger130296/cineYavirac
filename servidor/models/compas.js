@@ -4,7 +4,7 @@ const db = require("../database/db");
 
 const persona = require("./personas")
 const sala = require("./salas")
-module.exports = db.sequelize.define("compas", {
+module.exports = db.sequelize.define("compras", {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,

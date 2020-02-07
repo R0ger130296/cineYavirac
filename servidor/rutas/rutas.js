@@ -19,7 +19,6 @@ router.get("/persona", (req, res) => {
             res.send("error: " + err);
         });
 });
-
 router.post("/persona", (req, res, next) => {
     const datos = {
         nombre: req.body.nombre,
@@ -82,7 +81,7 @@ router.delete("/persona", async (req, res) => {
 });
 
 //metodos compras
-router.get("/compras", (req, res) => {
+router.get("/compra", (req, res) => {
     const { query } = req;
     compras.findAll({ where: query })
         .then(compra => {
@@ -92,8 +91,7 @@ router.get("/compras", (req, res) => {
             res.send("error: " + err);
         });
 });
-
-router.post("/compras", (req, res, next) => {
+router.post("/compra", (req, res, next) => {
     const datos = {
         numero_boletos: req.body.numero_boletos,
         idpersona: req.body.idpersona,
@@ -116,7 +114,7 @@ router.post("/compras", (req, res, next) => {
             });
     }
 });
-router.put("/compras", async (req, res) => {
+router.put("/compra", async (req, res) => {
     const { id } = req.query;
     const { numero_boletos, idpersona, idsala } = req.body;
     const data = await compras.findAll({
@@ -141,7 +139,7 @@ router.put("/compras", async (req, res) => {
         data: data
     })
 });
-router.delete("/compras", async (req, res) => {
+router.delete("/compra", async (req, res) => {
     const { id } = req.query;
     const eliminar = await compras.destroy({
         where: { id }
@@ -163,7 +161,6 @@ router.get("/horario", (req, res) => {
             res.send("error: " + err);
         });
 });
-
 router.post("/horario", (req, res, next) => {
     const datos = {
         hora: req.body.hora,
@@ -185,7 +182,7 @@ router.post("/horario", (req, res, next) => {
             });
     }
 });
-router.put("/horarios", async (req, res) => {
+router.put("/horario", async (req, res) => {
     const { id } = req.query;
     const { hora } = req.body;
     const data = await horarios.findAll({
@@ -208,7 +205,7 @@ router.put("/horarios", async (req, res) => {
         data: data
     })
 });
-router.delete("/horarios", async (req, res) => {
+router.delete("/horario", async (req, res) => {
     const { id } = req.query;
     const eliminar = await horarios.destroy({
         where: { id }
@@ -230,7 +227,6 @@ router.get("/pelicula", (req, res) => {
             res.send("error: " + err);
         });
 });
-
 router.post("/pelicula", (req, res, next) => {
     const datos = {
         resummen: req.body.resummen,
@@ -305,7 +301,6 @@ router.get("/sala", (req, res) => {
             res.send("error: " + err);
         });
 });
-
 router.post("/sala", (req, res, next) => {
     const datos = {
         nombre: req.body.nombre,

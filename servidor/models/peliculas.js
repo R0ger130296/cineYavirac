@@ -8,7 +8,7 @@ module.exports = db.sequelize.define("peliculas", {
         primaryKey: true,
         autoIncrement: true
     },
-    resummen: {
+    resumen: {
         type: Sequelize.STRING
     },
     categoria: {
