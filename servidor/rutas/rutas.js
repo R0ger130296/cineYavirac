@@ -362,4 +362,24 @@ router.delete("/sala", async (req, res) => {
     })
 });
 
+router.post("/login", (req, res, next) => {
+    const correo = req.body.correo
+    const clave = req.body.clave
+
+    persons.findAll()
+    .then(resultado => {
+        resultado.forEach(element => {
+            if(element.correo== correo && element.clave == clave){
+                res.status(200).json({
+                ok: true,
+                mensaje: "found"
+                })
+            }
+            return res.status(500).json({
+                ok: false,
+                mensaje: 'no-found'
+            })
+        })
+    })
+});
 module.exports = router;
