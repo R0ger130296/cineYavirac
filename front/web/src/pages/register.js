@@ -4,7 +4,7 @@ import axios from 'axios';
 const API_URL = "http://localhost:5000/film/persona";
 
 class Register extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       nombre: '',
@@ -21,79 +21,82 @@ class Register extends Component {
     e.preventDefault()
     this.post = {
       datos: {
-          nombre: this.state.nombre,
-          correo: this.state.correo,
-          clave: this.state.clave,
+        nombre: this.state.nombre,
+        correo: this.state.correo,
+        clave: this.state.clave,
       }
-  }
+    }
     if (this.post.datos.nombre === "" || this.post.datos.correo === "" || this.post.datos.clave === "") {
       alert("Complete todos los datos para continuar...");
     } else {
       axios.post(API_URL, this.post)
-      .then(response => {
-        if ( response.data.ok === true ) {
-          alert("Usuario registrado correctamente")
-          window.location.assign("http://localhost:3000/");
-        }
-      })
-      .catch(error => {
-        alert("Datos Incorrectos")
-      })
+        .then(response => {
+          if (response.data.ok === true) {
+            alert("Usuario registrado correctamente")
+            window.location.assign("http://localhost:3000/");
+          }
+        })
+        .catch(error => {
+          alert("Datos Incorrectos")
+        })
     }
   };
 
   render() {
     const { nombre, correo, clave } = this.state
     return (
-      <div className="bg-teal-200 h-screen font-sans">
-        <div className="container mx-auto h-full flex justify-center items-center">
-        <div className="w-1/3">
-            <h1 className="font-hairline mb-6 text-center text-2xl">Registrarse!</h1>
-            <div className="border-teal p-8 border-t-12 bg-white mb-6 rounded-lg shadow-lg">
-              <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded" onSubmit={ this.registerUser }>
+      <div className="container mx-auto">
+        <div className="cflex justify-center px-12 my-12">
+          <div className="w-full xl:w-3/4 xl:w-11/12 flex">
+            <h3 class="pt-4 text-2xl text-center">Registrate</h3>
+            <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
+              <form className="px-10 pt-6 pb-8 mb-4 bg-white rounded" onSubmit={this.registerUser}>
                 <div className="mb-4">
-                  <label className="font-bold text-gray-700 block mb-2">Nombre</label>
-                  <input className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
-                  type="text"
-                  placeholder="Ej: Paul"
-                  name="nombre"
-                  value={ nombre }
-                  onChange={ this.changeHandler } 
+                  <label className="block mb-2 text-sm font-bold text-gray-700">Nombre</label>
+                  <input className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    type="text"
+                    placeholder="Ej: Paul"
+                    name="nombre"
+                    value={nombre}
+                    onChange={this.changeHandler}
                   />
                 </div>
 
                 <div className="mb-4">
-                  <label className="font-bold text-gray-700 block mb-2">Correo Electrónico</label>
-                  <input className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
-                  type="text"
-                  placeholder="correo@gmail.com"
-                  name="correo"
-                  value={ correo }
-                  onChange={ this.changeHandler } 
+                  <label className="block mb-2 text-sm font-bold text-gray-700">Correo Electrónico</label>
+                  <input className="-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    type="text"
+                    placeholder="correo@gmail.com"
+                    name="correo"
+                    value={correo}
+                    onChange={this.changeHandler}
                   />
                 </div>
 
                 <div className="mb-4">
-                  <label className="font-bold text-gray-700 block mb-2">Contraseña</label>
-                  <input className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
-                  type="password"
-                  placeholder="********"
-                  name="clave"
-                  value={ clave }
-                  minLength="6"
-                  onChange={ this.changeHandler } 
-                  securetextentry="true"
+                  <label className="block mb-2 text-sm font-bold text-gray-700">Contraseña</label>
+                  <input className="-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                    type="password"
+                    placeholder="********"
+                    name="clave"
+                    value={clave}
+                    minLength="6"
+                    onChange={this.changeHandler}
+                    securetextentry="true"
                   />
                 </div>
 
-                <div className="flex items-center justify-between">
+                <div className="mb-6 text-center">
                   <button type="submit" className="bg-teal-600 hover:bg-teal-700 focus:outline-none focus:shadow-outline text-white font-bold py-2 px-4 rounded">
                     Registrarse
                   </button>
-                  <a href="http://localhost:3000/" className="bg-red-600 hover:bg-red-700 focus:outline-none focus:shadow-outline text-white font-bold py-2 px-4 rounded">
-                    Volver
+                  <hr class="mb-6 border-t" />
+                  <div class="text-center">
+                    <a href="http://localhost:3000/" className="bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline text-white font-bold py-2 px-4 rounded">
+                      Volver
                   </a>
-                </div>  
+                  </div>
+                </div>
               </form>
             </div>
           </div>

@@ -1,9 +1,7 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import Sidebar from '../components/sidebar';
 import Header from '../components/header';
 import axios from 'axios';
-
 const API = "http://localhost:5000/film/pelicula";
 
 class Movies extends Component {
@@ -33,7 +31,6 @@ class Movies extends Component {
 
     render() {
         const { peliculas } = this.state
-        const image_cover = require('../assets/film_default.jpg');
         const image_categorie = require('../assets/category.png');
 
         return(
@@ -47,7 +44,7 @@ class Movies extends Component {
                         <div className="flex flex-wrap items-center justify-center">
                         { peliculas.map(element => 
                             <div className="max-w-md w-full lg:flex" key={ element.id }>
-                                <img className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src={ image_cover } alt="image_cover" />
+                                <img className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src={ element.imagen } alt="image_cover" />
                                 <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                     <div className="mb-8">
                                         <div className="text-black font-bold text-xl mb-2">Título: { element.titulo }</div>

@@ -22,14 +22,6 @@ const Sidebar = () => (
                         </Link>
                     </li>
                     <li className="items-center">
-                        <Link to="/home">
-                            <button className="text-gray-600 hover:text-gray-900 text-xs uppercase py-3 font-bold block">
-                                <i className="fas fa-newspaper mr-2 text-sm"></i>
-                                Reporte de Compras
-                            </button>
-                        </Link>
-                    </li>
-                    <li className="items-center">
                         <p className="text-gray-900 text-xs uppercase py-3 font-bold block">
                             <i className="fas fa-book-open mr-2 text-sm"></i>
                             Películas
@@ -65,7 +57,7 @@ const Sidebar = () => (
                             </Link>
                         </ul>
                         <ul>
-                            <Link to="/home">
+                            <Link to="/filmsroom">
                                 <li className="mx-8 text-gray-600 hover:text-gray-900">
                                     <i className="fas fa-arrow-circle-right"></i>
                                     Asignar Peliculas

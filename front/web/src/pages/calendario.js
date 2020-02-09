@@ -4,9 +4,9 @@ import Sidebar from '../components/sidebar';
 import Header from '../components/header';
 import axios from 'axios';
 
-const API = "http://localhost:5000/film/sala";
+const API = "http://localhost:5000/film/horario";
 
-class Rooms extends Component {
+class Schedules extends Component {
     handleOpenModal () { this.setState({ showModal: true }) }      
     handleCloseModal () { this.setState({ showModal: false }) }
 
@@ -14,12 +14,11 @@ class Rooms extends Component {
         super(props);
         this.state = {
             table_header: {
-                nombre: 'Nombre de la Sala',
-                descripcion: 'Descripción',
+                id: 'N°',
+                hora: 'Horas de Proyección',
             },
-            salas: [],
-            nombre: '',
-            descripcion: ''
+            horarios: [],
+            hora: '',
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -32,7 +31,7 @@ class Rooms extends Component {
     componentDidMount() {
         axios.get(API)
         .then(response => {
-            this.setState({ salas: response.data.datos })
+            this.setState({ horarios: response.data.datos })
         })
         .catch(error => {
             console.log(error)
@@ -43,21 +42,19 @@ class Rooms extends Component {
         e.preventDefault()
         this.post = {
             datos: {
-                nombre: this.state.nombre,
-                descripcion: this.state.descripcion
+                hora: this.state.hora,
             }
         }
 
-        if (this.post.datos.nombre === "" ||
-            this.post.datos.descripcion === "" 
+        if (this.post.datos.hora === ""
             ) {
           alert("Complete todos los datos para continuar...");
         } else {
           axios.post(API, this.post)
           .then(response => {
             if ( response.data.ok === true ) {
-                alert("Sala agregada exitosamente")
-                window.location.assign("http://localhost:3000/rooms");
+                alert("Horario agregado exitosamente")
+                window.location.assign("http://localhost:3000/schedules");
             }
           })
           .catch(error => {
@@ -70,7 +67,7 @@ class Rooms extends Component {
         axios.delete(`${ API }?id=${ value }`, {
             data: { id: value }
         })
-        window.location.assign("http://localhost:3000/rooms");
+        window.location.assign("http://localhost:3000/schedules");
     }
 
     // updateData = () => {
@@ -91,7 +88,7 @@ class Rooms extends Component {
     // }
 
     render() {
-        const { salas, nombre, descripcion } = this.state
+        const { horarios, hora } = this.state
         return(
             <div>
                 <Sidebar />,
@@ -100,7 +97,7 @@ class Rooms extends Component {
                     <hr />
                     <main className="my-8">
                         <div className="justify-center my-5 select-none flex">
-                            <p className="mt-5 text-center mr-10 text-2xl">Salas</p>
+                            <p className="mt-5 text-center mr-10 text-2xl">Horarios</p>
                             <button onClick={ this.handleOpenModal } type="button" className="mr-8 shadow-md no-underline font-black text-2xl rounded-full h-12 w-12 flex items-center justify-center bg-blue-400 text-white text-sm border-blue btn-primary hover:text-white hover:bg-pink-500 focus:outline-none active:shadow-none">
                                 <i className="fas fa-plus-square"></i>
                             </button>
@@ -109,25 +106,15 @@ class Rooms extends Component {
                                 className="flex-1 text-white text-center pl-48 py  py-0 my-10 mr-40 ml-64">
                                 <div className="leading-loose">
                                     <form className="max-w-xl m-4 p-10 bg-white rounded shadow-xl" onSubmit={ this.saveData }>
-                                        <p className="text-gray-800 font-medium">Nueva Sala</p>
+                                        <p className="text-gray-800 font-medium">Nuevo Horario</p>
                                             <div className="mt-2">
-                                                <label className="block text-sm text-gray-600" htmlFor="nombre">Nombre</label>
+                                                <label className="block text-sm text-gray-600" htmlFor="hora">Horario</label>
                                                 <input className="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded" 
                                                     type="text" 
-                                                    placeholder="Ej: Sala 1" 
-                                                    name="nombre"
-                                                    value={ nombre }
+                                                    placeholder="Ej: 10 a 12 horas" 
+                                                    name="hora"
+                                                    value={ hora }
                                                     onChange={ this.changeHandler } 
-                                                />
-                                            </div>
-                                            <div className="mt-2">
-                                                <label className="block text-sm text-gray-600" htmlFor="descripcion">Descripción</label>
-                                                <input className="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded" 
-                                                    type="text" 
-                                                    placeholder="Ej: Para 200 personas"
-                                                    name="descripcion"
-                                                    value={ descripcion }
-                                                    onChange={ this.changeHandler }
                                                 />
                                             </div>
                                             <div className="mt-4">
@@ -143,8 +130,8 @@ class Rooms extends Component {
                             <table className="w-full text-md bg-white shadow-md rounded mb-4">
                                 <thead className="border-b">
                                     <tr>
-                                        <th className="text-left p-3 px-5">{ this.state.table_header.nombre }</th>
-                                        <th className="text-left p-3 px-5">{ this.state.table_header.descripcion }</th>
+                                        <th className="text-left p-3 px-5">{ this.state.table_header.id }</th>
+                                        <th className="text-left p-3 px-5">{ this.state.table_header.hora }</th>
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -153,13 +140,16 @@ class Rooms extends Component {
                                 <tbody>
                                     <tr className="border-b hover:bg-orange-100 bg-gray-100">
                                         <td>
-                                            { salas.map(element => <p className="p-2 px-5" key={ element.id }> {element.nombre} </p>) }
+                                            { horarios.map(element => <p className="p-2 px-5" key={ element.id }> {element.id} </p>) }
                                         </td>
                                         <td>
-                                            { salas.map(element => <p className="p-2 px-5" key={ element.id }> {element.descripcion} </p>) }
+                                            { horarios.map(element => <p className="p-2 px-5" key={ element.id }> {element.hora} </p>) }
                                         </td>
                                         <td>
-                                            { salas.map(element => <p className="p-2 px-5" key={ element.id }><button onClick={ () => this.deleteData(element.id) } className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Eliminar</button></p> )}
+                                            { horarios.map(element => <p className="p-2 px-5" key={ element.id }><button onClick={ this.handleOpenModal } className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Editar</button></p> )}
+                                        </td>
+                                        <td>
+                                            { horarios.map(element => <p className="p-2 px-5" key={ element.id }><button onClick={ () => this.deleteData(element.id) } className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Eliminar</button></p> )}
                                         </td>
                                     </tr>
                                 </tbody>
@@ -172,4 +162,4 @@ class Rooms extends Component {
     }
 }
 
-export default Rooms;
+export default Schedules;

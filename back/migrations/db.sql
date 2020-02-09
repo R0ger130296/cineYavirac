@@ -19,7 +19,7 @@ estado bool
 
 create table horarios(
 id int auto_increment not null primary key,
-hora date
+hora time
 );
 
 create table salas(
@@ -44,3 +44,7 @@ foreign key (idpersona) references personas(id),
 idsala int,
 foreign key (idsala) references salas(id)
 );
+
+insert into horarios value(1,'10:00');
+insert into horarios value(2,'14:00');
+insert into horarios value(3,'18:00')
