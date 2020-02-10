@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import Sidebar from '../components/sidebar';
 import Header from '../components/header';
 import axios from 'axios';
 
-const API = "http://localhost:5000/film/";
+const API = "http://localhost:4000/film/";
 
 class FilmsRoom extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class FilmsRoom extends Component {
         axios.delete(`${ API }?id=${ value }`, {
             data: { id: value }
         })
-        window.location.assign("http://localhost:3000/filmsRoom");
+        window.location.assign("http://localhost:3001/films_room");
     }
 
     render() {

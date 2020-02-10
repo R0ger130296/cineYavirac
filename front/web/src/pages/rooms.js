@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import Sidebar from '../components/sidebar';
 import Header from '../components/header';
 import axios from 'axios';
 
-const API = "http://localhost:5000/film/sala";
+const API = "http://localhost:4000/film/sala";
 
 class Rooms extends Component {
     handleOpenModal () { this.setState({ showModal: true }) }      
@@ -57,7 +58,7 @@ class Rooms extends Component {
           .then(response => {
             if ( response.data.ok === true ) {
                 alert("Sala agregada exitosamente")
-                window.location.assign("http://localhost:3000/rooms");
+                window.location.assign("http://localhost:3001/rooms");
             }
           })
           .catch(error => {
@@ -70,7 +71,7 @@ class Rooms extends Component {
         axios.delete(`${ API }?id=${ value }`, {
             data: { id: value }
         })
-        window.location.assign("http://localhost:3000/rooms");
+        window.location.assign("http://localhost:3001/rooms");
     }
 
     // updateData = () => {
@@ -157,6 +158,9 @@ class Rooms extends Component {
                                         </td>
                                         <td>
                                             { salas.map(element => <p className="p-2 px-5" key={ element.id }> {element.descripcion} </p>) }
+                                        </td>
+                                        <td>
+                                            { salas.map(element => <p className="p-2 px-5" key={ element.id }><button onClick={ this.handleOpenModal } className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Editar</button></p> )}
                                         </td>
                                         <td>
                                             { salas.map(element => <p className="p-2 px-5" key={ element.id }><button onClick={ () => this.deleteData(element.id) } className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Eliminar</button></p> )}

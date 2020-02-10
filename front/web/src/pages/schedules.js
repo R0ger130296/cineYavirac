@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import Sidebar from '../components/sidebar';
 import Header from '../components/header';
 import axios from 'axios';
 
-const API = "http://localhost:5000/film/horario";
+const API = "http://localhost:4000/film/horario";
 
 class Schedules extends Component {
     handleOpenModal () { this.setState({ showModal: true }) }      
@@ -54,7 +55,7 @@ class Schedules extends Component {
           .then(response => {
             if ( response.data.ok === true ) {
                 alert("Horario agregado exitosamente")
-                window.location.assign("http://localhost:3000/schedules");
+                window.location.assign("http://localhost:3001/schedules");
             }
           })
           .catch(error => {
@@ -67,8 +68,25 @@ class Schedules extends Component {
         axios.delete(`${ API }?id=${ value }`, {
             data: { id: value }
         })
-        window.location.assign("http://localhost:3000/schedules");
+        window.location.assign("http://localhost:3001/schedules");
     }
+
+    // updateData = () => {
+    //     axios.put(API+"?tabla=persona", {
+    //         persona_identificacion: this.state.persona_identificacion,
+    //         persona_nombre: this.state.persona_nombre,
+    //         persona_email: this.state.persona_email,
+    //         persona_direccion: this.state.persona_direccion,
+    //         persona_telefono: this.state.persona_telefono,
+    //         persona_clave: this.state.persona_clave
+    //     })
+    //     .then(response => {
+    //         console.log(response);
+    //     })
+    //     .catch(error => {
+    //         console.log(error);
+    //     });
+    // }
 
     render() {
         const { horarios, hora } = this.state

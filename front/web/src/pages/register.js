@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-const API_URL = "http://localhost:5000/film/persona";
+const API_URL = "http://localhost:4000/film/persona";
 
 class Register extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class Register extends Component {
         .then(response => {
           if (response.data.ok === true) {
             alert("Usuario registrado correctamente")
-            window.location.assign("http://localhost:3000/");
+            window.location.assign("http://localhost:3001/");
           }
         })
         .catch(error => {
@@ -48,7 +48,7 @@ class Register extends Component {
       <div className="container mx-auto">
         <div className="cflex justify-center px-12 my-12">
           <div className="w-full xl:w-3/4 xl:w-11/12 flex">
-            <h3 class="pt-4 text-2xl text-center">Registrate</h3>
+            <h3 className="pt-4 text-2xl text-center">Registrate</h3>
             <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
               <form className="px-10 pt-6 pb-8 mb-4 bg-white rounded" onSubmit={this.registerUser}>
                 <div className="mb-4">
@@ -90,9 +90,9 @@ class Register extends Component {
                   <button type="submit" className="bg-teal-600 hover:bg-teal-700 focus:outline-none focus:shadow-outline text-white font-bold py-2 px-4 rounded">
                     Registrarse
                   </button>
-                  <hr class="mb-6 border-t" />
-                  <div class="text-center">
-                    <a href="http://localhost:3000/" className="bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline text-white font-bold py-2 px-4 rounded">
+                  <hr className="mb-6 border-t" />
+                  <div className="text-center">
+                    <a href="http://localhost:3001/" className="bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline text-white font-bold py-2 px-4 rounded">
                       Volver
                   </a>
                   </div>

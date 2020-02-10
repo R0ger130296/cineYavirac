@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from'react';
 import { Link } from "react-router-dom";
 
@@ -23,7 +22,7 @@ const Sidebar = () => (
                     </li>
                     <li className="items-center">
                         <p className="text-gray-900 text-xs uppercase py-3 font-bold block">
-                            <i className="fas fa-film-open mr-2 text-sm"></i>
+                            <i className="fas fa-book-open mr-2 text-sm"></i>
                             Películas
                         </p>
                         <ul>
@@ -57,18 +56,18 @@ const Sidebar = () => (
                             </Link>
                         </ul>
                         <ul>
-                            <Link to="/filmsroom">
-                                <li className="mx-8 text-gray-600 hover:text-gray-900">
-                                    <i className="fas fa-arrow-circle-right"></i>
-                                    Asignar Peliculas
-                                </li>
-                            </Link>
-                        </ul>
-                        <ul>
                             <Link to="/schedules">
                                 <li className="mx-8 text-gray-600 hover:text-gray-900">
                                     <i className="fas fa-arrow-circle-right"></i>
                                     Crear Horarios
+                                </li>
+                            </Link>
+                        </ul>
+                        <ul>
+                            <Link to="/films_room">
+                                <li className="mx-8 text-gray-600 hover:text-gray-900">
+                                    <i className="fas fa-arrow-circle-right"></i>
+                                    Asignar Peliculas
                                 </li>
                             </Link>
                         </ul>
