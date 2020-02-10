@@ -15,15 +15,15 @@ const Sidebar = () => (
                 <ul className="md:flex-col md:min-w-full flex flex-col list-none">
                     <li className="items-center">
                         <Link to="/home">
-                            <button className="text-pink-500 hover:text-pink-700 text-xs uppercase py-3 font-bold block">
-                                <i className="fas fa-tv opacity-75 mr-2 text-sm"></i>
+                            <button className="text-blue-500 hover:text-pink-700 text-xs uppercase py-3 font-bold block">
+                                <i className="fas fa-circle-notch fa-spin fa-5x text-sm"></i>
                                 Inicio
                             </button>
                         </Link>
                     </li>
                     <li className="items-center">
                         <p className="text-gray-900 text-xs uppercase py-3 font-bold block">
-                            <i className="fas fa-book-open mr-2 text-sm"></i>
+                            <i className="fas fa-film-open mr-2 text-sm"></i>
                             Películas
                         </p>
                         <ul>
@@ -61,6 +61,14 @@ const Sidebar = () => (
                                 <li className="mx-8 text-gray-600 hover:text-gray-900">
                                     <i className="fas fa-arrow-circle-right"></i>
                                     Asignar Peliculas
+                                </li>
+                            </Link>
+                        </ul>
+                        <ul>
+                            <Link to="/schedules">
+                                <li className="mx-8 text-gray-600 hover:text-gray-900">
+                                    <i className="fas fa-arrow-circle-right"></i>
+                                    Crear Horarios
                                 </li>
                             </Link>
                         </ul>

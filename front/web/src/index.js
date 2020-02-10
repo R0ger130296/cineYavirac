@@ -14,7 +14,7 @@ import Movies from './pages/movies';
 import Rooms from './pages/rooms';
 import FilmsRoom from './pages/filmsRoom';
 import Calendario from './pages/calendario';
-
+import FilmsRoomAdd from './pages//peliRoomsAdd';
 ReactDOM.render(
     <Router>
         <Switch>
@@ -26,6 +26,7 @@ ReactDOM.render(
             <Route path="/rooms" component={ Rooms } />
             <Route path="/filmsroom" component={ FilmsRoom } />
             <Route path="/schedules" component={ Calendario } />
+            <Route path="/films_room_add" component={ FilmsRoomAdd } />
             <Route component={ Page404 } />
         </Switch>
     </Router>,
