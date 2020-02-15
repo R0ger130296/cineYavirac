@@ -15,7 +15,14 @@ const Header = () => (
                       Salir
                     </button>
                 </Link>
-            </div>            
+            </div>   
+            <div><br></br>
+                <Link to="/home">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                      Inicio
+                    </button>
+                </Link>
+            </div>          
         </div>
 )
 

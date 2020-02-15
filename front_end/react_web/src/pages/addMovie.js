@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Sidebar from '../components/sidebar';
 import Header from '../components/header';
 import axios from 'axios';
-import SweetAlert from 'sweetalert2-react';
+
 const API = "http://localhost:5000/film/pelicula";
 
 class AddMovie extends Component {
@@ -18,7 +18,6 @@ class AddMovie extends Component {
             estado: true
         }
     }
-
 
     changeHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value })
@@ -42,30 +41,32 @@ class AddMovie extends Component {
             this.post.datos.categoria === "" ||
             this.post.datos.valorBoleto === ""
             // this.post.datos.imagen === ""
-        ) {
-            alert("Complete todos los datos para continuar...");
+            ) {
+          alert("Complete todos los datos para continuar...");
         } else {
-            axios.post(API, this.post)
-                .then(response => {
-                    if (response.data.ok === true) {
-                        window.location.assign("http://localhost:3000/movies");
-                    }
-                })
-                .catch(error => {
-                })
+          axios.post(API, this.post)
+          .then(response => {
+            if ( response.data.ok === true ) {
+                alert("Agregado exitosamente")
+                window.location.assign("http://localhost:3000/movies");
+            }
+          })
+          .catch(error => {
+            alert(error)
+          })
         }
     };
 
 
     render() {
-        const {
-            titulo,
-            resumen,
-            categoria,
-            valorBoleto,
+        const { 
+            titulo, 
+            resumen, 
+            categoria, 
+            valorBoleto, 
             // imagen,
         } = this.state
-        return (
+        return(
             <div>
                 <Sidebar />,
                 <Header />,
@@ -73,17 +74,17 @@ class AddMovie extends Component {
                     <hr />
                     <main className="my-8">
                         <p className="text-center my-5 text-2xl">Agregar Nueva Pelìcula</p>
-                        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mx-8" onSubmit={this.saveData}>
+                        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2 mx-8" onSubmit={ this.saveData }>
                             <div className="-mx-3 md:flex mb-6">
                                 <div className="md:w-full px-3">
                                     <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="titulo">
                                         Título
                                     </label>
-                                    <input className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                                        type="text"
+                                    <input className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                                        type="text" 
                                         name="titulo"
-                                        value={titulo}
-                                        onChange={this.changeHandler}
+                                        value={ titulo }
+                                        onChange={ this.changeHandler } 
                                     />
                                 </div>
                             </div>
@@ -92,46 +93,40 @@ class AddMovie extends Component {
                                     <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="resumen">
                                         Resumen
                                     </label>
-                                    <textarea className="appearance-none border-2 border-gray-200 rounded w-full text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 py-3 px-4 mb-3"
-                                        type="text"
+                                    <textarea className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 py-3 px-4 mb-3" 
+                                        type="text" 
                                         name="resumen"
-                                        value={resumen}
-                                        onChange={this.changeHandler}
+                                        value={ resumen }
+                                        onChange={ this.changeHandler } 
                                     />
                                 </div>
                                 <div className="md:w-1/3 px-3">
                                     <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="categoria">
                                         Categoria
                                     </label>
-                                    <input className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
-                                        type="text"
+                                    <input className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" 
+                                        type="text" 
                                         name="categoria"
-                                        value={categoria}
-                                        onChange={this.changeHandler}
+                                        value={ categoria }
+                                        onChange={ this.changeHandler } 
                                     />
                                 </div>
                                 <div className="md:w-1/3 px-3">
                                     <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="valorBoleto">
                                         Valor del Boleto
                                     </label>
-                                    <input className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4"
+                                    <input className="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4" 
                                         type="text"
                                         min="0"
                                         placeholder="Ej: 3.50"
                                         name="valorBoleto"
-                                        value={valorBoleto}
-                                        onChange={this.changeHandler}
+                                        value={ valorBoleto }
+                                        onChange={ this.changeHandler } 
                                     />
                                 </div>
                             </div>
                             <div className="mt-4">
-                                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onClick={() => this.setState({ show: true })} type="submit">Guardar</button>
-                                <SweetAlert
-                                    show={this.state.show}
-                                    title="Demo"
-                                    text="SweetAlert in React"
-                                    onConfirm={() => this.setState({ show: false })}
-                                />
+                                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Guardar</button>
                             </div>
                         </form>
                     </main>

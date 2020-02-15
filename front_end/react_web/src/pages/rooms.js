@@ -74,24 +74,6 @@ class Rooms extends Component {
         })
         window.location.assign("http://localhost:3000/rooms");
     }
-
-    // updateData = () => {
-    //     axios.put(API+"?tabla=persona", {
-    //         persona_identificacion: this.state.persona_identificacion,
-    //         persona_nombre: this.state.persona_nombre,
-    //         persona_email: this.state.persona_email,
-    //         persona_direccion: this.state.persona_direccion,
-    //         persona_telefono: this.state.persona_telefono,
-    //         persona_clave: this.state.persona_clave
-    //     })
-    //     .then(response => {
-    //         console.log(response);
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     });
-    // }
-
     render() {
         const { salas, nombre, descripcion } = this.state
         return(
@@ -103,10 +85,9 @@ class Rooms extends Component {
                     <main className="my-8">
                         <div className="justify-center my-5 select-none flex">
                             <p className="mt-5 text-center mr-10 text-2xl">Salas</p>
-                            <button onClick={ this.handleOpenModal } type="button" className="mr-8 shadow-md no-underline font-black text-2xl rounded-full h-12 w-12 flex items-center justify-center bg-blue-400 text-white text-sm border-blue btn-primary hover:text-white hover:bg-pink-500 focus:outline-none active:shadow-none">
+                            <button onClick={ this.handleOpenModal } type="button" className="mr-8 shadow-md no-underline font-black text-2xl rounded-full h-12 w-12 flex items-center justify-center bg-purple-500 text-white text-sm border-blue btn-primary focus:outline-none active:shadow-none">
                                 <i className="fas fa-plus-square"></i>
                             </button>
-                            {/* MODAL */}
                             <ReactModal isOpen={this.state.showModal} contentLabel="onRequestClose Example" onRequestClose={this.handleCloseModal}
                                 className="flex-1 text-white text-center pl-48 py  py-0 my-10 mr-40 ml-64">
                                 <div className="leading-loose">

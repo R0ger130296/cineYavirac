@@ -33,7 +33,7 @@ class Movies extends Component {
 
     render() {
         const { peliculas } = this.state
-        const image_cover = require('../assets/film_default.jpg');
+        const image_cover = require('../assets/film_default.png');
         const image_categorie = require('../assets/category.png');
 
         return(
@@ -46,35 +46,26 @@ class Movies extends Component {
                         <p className="text-center my-5 text-2xl">Cartelera</p>
                         <div className="flex flex-wrap items-center justify-center">
                         { peliculas.map(element => 
-                            <div className="max-w-md w-full lg:flex" key={ element.id }>
-                                <img className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src={ image_cover } alt="image_cover" />
+                            <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden" key={ element.id }>
+                                <img className="block mx-auto sm:mx-0 sm:flex-shrink-0 h-16 sm:h-24 rounded-full" src={ image_cover } alt="image_cover" />
                                 <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                                    <div className="mb-8">
-                                        <div className="text-black font-bold text-xl mb-2">Título: { element.titulo }</div>
-                                        <p className="text-grey-darker text-base">Resumen: { element.resumen }</p>
-                                    </div>
-                                    <div className="flex items-center">
+                                    <div className="sm:flex sm:items-center px-6 py-4">
                                         <img className="w-10 h-10 rounded-full mr-4" src={ image_categorie } alt="image_categorie" />
                                         <div className="text-sm">
                                             <p className="text-black leading-none">{ element.categoria }</p>
                                             <p className="text-grey-dark">Valor: $ { element.valorBoleto }</p>
                                         </div>
                                     </div>
-                                    <div className="m-3">
-                                        {/* <button className="bg-white text-gray-800 font-bold rounded border-b-2 border-green-500 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                <path fill="currentcolor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
-                                            </svg>
-                                            <span className="mr-2">Actualizar</span>
-                                        </button> */}
+                                    <div className="mb-8">
+                                        <div className="mt-4 sm:mt-0 sm:ml-4 text-center sm:text-left">Título: { element.titulo }</div>
+                                        <p className="text-grey-darker text-base">Resumen: { element.resumen }</p>
                                     </div>
                                     <div className="m-3">
-                                        <button className="bg-white text-gray-800 font-bold rounded border-b-2 border-red-500 hover:border-red-600 hover:bg-red-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center"
+                                    </div>
+                                    <div className="m-3">
+                                        <button className="bg-white text-gray-800 f:bg-red-500 hover:tems-center"
                                             onClick={ () => this.deleteData(element.id) }>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                                <path fill="currentcolor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
-                                            </svg>
-                                            <span className="mr-2">Eliminar</span>
+                                            <span className="text-purple-500 hover:text-white hover:bg-purple-500 border border-purple-500 text-xs font-semibold rounded-full px-4 py-1 leading-normal">Eliminar</span>
                                         </button>
                                     </div>
                                 </div>
