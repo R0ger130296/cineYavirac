@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ImageBackground, TouchableHighlight, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, TouchableHighlight, ScrollView, AsyncStorage } from 'react-native';
 import { Card } from 'react-native-elements';
 import { Link } from "react-router-native";
 import { RadioButton } from 'react-native-paper';
@@ -14,25 +14,63 @@ export default class MovieDetail extends Component {
       checked: '',
       pelicula: [],
       sala_peliculas: [],
+      idpelicula: '',
+      // horario:[],
     };
-}
-
-  componentDidMount() {
-    axios.get(`${ API }pelicula?id=1`)
+  }
+// getHorario=()=>{
+//   axios.get(`${API}`)
+//   .then(res=>{
+//     this.setState({horario: response.data.datos})
+//   })
+// }
+  getData = () => {
+    axios.get(`${ API }pelicula?id=${ this.state.idpelicula }`)
     .then(response => {
       this.setState({ pelicula: response.data.datos })
     })
     .catch(error => {
       console.log(error)
     })
-
-    axios.get(`${ API }sala_pelicula?idpelicula=1`)
+  
+    axios.get(`${ API }sala_pelicula?idpelicula=${ this.state.idpelicula }`)
     .then(response => {
       this.setState({ sala_peliculas: response.data.datos })
     })
     .catch(error => {
       console.log(error)
     })
+  }
+
+  asyncstorageSave = async (id) => {
+    try {
+      await AsyncStorage.setItem('idsala_peliculas', id.toString())
+    } catch (err) {
+      alert(err)
+    }
+  }
+
+  asyncstorageGet = async () => {
+    try {
+      const idfilm = await AsyncStorage.getItem('idpelicula')
+      this.setState({idpelicula: idfilm})
+      this.getData()
+    } catch (e) {
+      alert(e)
+    }
+  }
+
+  asyncstorageClear = async () => {
+    try {
+      await AsyncStorage.clear()
+      this.setState({ idpelicula: '' })
+    } catch (e) {
+      alert(e)
+    }
+  }
+
+  componentDidMount() {
+    this.asyncstorageGet()
   }
 
   render() {
@@ -46,7 +84,7 @@ export default class MovieDetail extends Component {
 
           <ScrollView vertical={true}>
             { pelicula.map( element => 
-              <Card key={ element.id } title={ element.titulo } image={require('../../assets/film_default.jpg')}>
+              <Card key={ element.id } title={ element.titulo } image={require('../../assets/icon.png')}>
                 <Text style={{marginBottom: 10}}>
                   Resumen: { element.resumen }
                 </Text>
@@ -67,7 +105,7 @@ export default class MovieDetail extends Component {
                   <Text>Sala: { element.idsala }</Text>
                   <RadioButton value={ element.id }
                     status={checked === element.id ? 'checked' : 'unchecked'}
-                    onPress={() => { this.setState({ checked: element.id }); }}
+                    onPress={() => { this.setState({ checked: element.id }), this.asyncstorageSave(element.id) }}
                   />
                 </View>
                 )
@@ -75,7 +113,7 @@ export default class MovieDetail extends Component {
             </Card>
 
             <TouchableHighlight>
-              <Link to="/" style={ styles.button }>
+              <Link to="/" style={ styles.button } onPress={ () => this.asyncstorageClear() }>
                 <Text>Volver</Text>
               </Link>
             </TouchableHighlight>
@@ -98,35 +136,35 @@ const styles = StyleSheet.create({
     width: '100%', 
     height: '100%',
     justifyContent:'center',
-    backgroundColor: 'red',
+    backgroundColor: 'blue',
   },
   overlayContainer: {
-    flex: 1,
+    flex: 20,
     backgroundColor: 'rgba(47,163,218, .4)',
   },
   top: {
-    height: '20%',
+    height: '40%',
     alignItems: 'center',
     justifyContent: 'center',
   },
   header: {
-    color: '#fff',
-    fontSize: 28,
-    borderColor: '#fff',
-    borderWidth: 2,
-    padding: 10,
-    paddingLeft: 40,
-    paddingRight: 40,
-    backgroundColor: 'rgba(255,255,255, .1)',
+    color: 'black',
+    fontSize: 25,
+    borderColor: 'green',
+    borderWidth: 5,
+    padding: 8,
+    paddingLeft: 20,
+    paddingRight: 20,
+    backgroundColor: 'rgba(255,255,255,.6)',
     textAlign: 'center'
   },
   button: {
     position: 'relative',
-    bottom: '0%',
-    marginBottom: 20,
-    borderRadius: 100,
+    bottom: '-2%',
+    marginBottom: 5,
+    borderRadius: 50,
     backgroundColor: '#fff',
-    paddingHorizontal: 20,
+    paddingHorizontal: 100,
     paddingVertical: 10,
     alignItems: 'center',
     justifyContent: 'center',

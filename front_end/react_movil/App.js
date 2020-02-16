@@ -3,8 +3,8 @@ import { StyleSheet, View } from 'react-native';
 import { NativeRouter, Switch, Route } from "react-router-native";
 
 import Movies from './src/pages/movies';
-import MovieDetail from './src/pages/movie_detail';
-import BuyTickets from './src/pages/buy_tickets';
+import MovieDetail from './src/pages/detallePelicula';
+import BuyTickets from './src/pages/compraTicket';
 import SendTickets from './src/pages/send_tickets';
 
 export default class App extends Component {

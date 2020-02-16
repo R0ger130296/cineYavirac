@@ -71,23 +71,6 @@ class Schedules extends Component {
         window.location.assign("http://localhost:3000/schedules");
     }
 
-    // updateData = () => {
-    //     axios.put(API+"?tabla=persona", {
-    //         persona_identificacion: this.state.persona_identificacion,
-    //         persona_nombre: this.state.persona_nombre,
-    //         persona_email: this.state.persona_email,
-    //         persona_direccion: this.state.persona_direccion,
-    //         persona_telefono: this.state.persona_telefono,
-    //         persona_clave: this.state.persona_clave
-    //     })
-    //     .then(response => {
-    //         console.log(response);
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     });
-    // }
-
     render() {
         const { horarios, hora } = this.state
         return(
@@ -99,8 +82,8 @@ class Schedules extends Component {
                     <main className="my-8">
                         <div className="justify-center my-5 select-none flex">
                             <p className="mt-5 text-center mr-10 text-2xl">Horarios</p>
-                            <button onClick={ this.handleOpenModal } type="button" className="mr-8 shadow-md no-underline font-black text-2xl rounded-full h-12 w-12 flex items-center justify-center bg-blue-400 text-white text-sm border-blue btn-primary hover:text-white hover:bg-pink-500 focus:outline-none active:shadow-none">
-                                <i className="fas fa-plus-square"></i>
+                            <button onClick={ this.handleOpenModal } type="button" className="mr-8 shadow-md no-underline font-black text-2xl rounded-full h-12 w-12 flex items-center justify-center bg-blue-400 text-white text-sm border-blue btn-primary hover:text-white hover:bg-red-500 focus:outline-none active:shadow-none">
+                                <i className="fas fa-plus"></i>
                             </button>
                             {/* MODAL */}
                             <ReactModal isOpen={this.state.showModal} contentLabel="onRequestClose Example" onRequestClose={this.handleCloseModal}
@@ -119,7 +102,7 @@ class Schedules extends Component {
                                                 />
                                             </div>
                                             <div className="mt-4">
-                                                <button className="px-4 py-1 text-white font-light tracking-wider bg-gray-900 hover:bg-gray-800 rounded" type="submit">Guardar</button>
+                                                <button className="text-purple-500 hover:text-white hover:bg-purple-500 border border-purple-500 text-xs font-semibold rounded-full px-4 py-1 leading-normal" type="submit">Guardar</button>
                                             </div>
                                     </form>
 
@@ -145,9 +128,6 @@ class Schedules extends Component {
                                         </td>
                                         <td>
                                             { horarios.map(element => <p className="p-2 px-5" key={ element.id }> {element.hora} </p>) }
-                                        </td>
-                                        <td>
-                                            { horarios.map(element => <p className="p-2 px-5" key={ element.id }><button onClick={ this.handleOpenModal } className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Editar</button></p> )}
                                         </td>
                                         <td>
                                             { horarios.map(element => <p className="p-2 px-5" key={ element.id }><button onClick={ () => this.deleteData(element.id) } className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Eliminar</button></p> )}

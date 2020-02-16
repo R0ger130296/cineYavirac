@@ -51,7 +51,7 @@ class FilmsRoom extends Component {
                         <div className="justify-center my-5 select-none flex">
                             <p className="mt-5 text-center mr-10 text-2xl">Asignar Películas</p>
                             <button onClick={() => window.location.assign("http://localhost:3000/films_room_add")} type="button" className="mr-8 shadow-md no-underline font-black text-2xl rounded-full h-12 w-12 flex items-center justify-center bg-blue-400 text-white text-sm border-blue btn-primary hover:text-white hover:bg-pink-500 focus:outline-none active:shadow-none">
-                                <i className="fas fa-plus-square"></i>
+                                <i className="fas fa-plus"></i>
                             </button>
                         </div>  
                         <div className="px-3 py-4 flex justify-center">
@@ -77,7 +77,7 @@ class FilmsRoom extends Component {
                                             { sala_peliculas.map(element => <p className="p-2 px-5" key={ element.id }> {element.idhorario} </p>) }
                                         </td>
                                         <td>
-                                            { sala_peliculas.map(element => <p className="p-2 px-5" key={ element.id }><button onClick={ () => this.deleteData(element.id) } className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Eliminar</button></p> )}
+                                            { sala_peliculas.map(element => <p className="p-2 px-5" key={ element.id }><button onClick={ () => this.deleteData(element.id) } className="text-purple-500 hover:text-white hover:bg-purple-500 border border-purple-500 text-xs font-semibold rounded-full px-4 py-1 leading-normal">Eliminar</button></p> )}
                                         </td>
                                     </tr>
                                 </tbody>

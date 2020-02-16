@@ -137,7 +137,7 @@ class FilmsRoomAdd extends Component {
                             </div>
 
                             <div className="mt-4">
-                                <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Guardar</button>
+                                <button className="text-purple-500 hover:text-white hover:bg-purple-500 border border-purple-500 text-xs font-semibold rounded-full px-4 py-1 leading-normal" type="submit">Guardar</button>
                             </div>
                         </form>
                     </main>

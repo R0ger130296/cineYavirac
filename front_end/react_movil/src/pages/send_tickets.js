@@ -1,14 +1,59 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet,ImageBackground,TouchableHighlight, TextInput } from 'react-native';
+import { Text, View, StyleSheet,ImageBackground,TouchableHighlight, TextInput, AsyncStorage } from 'react-native';
 import { Card } from 'react-native-elements';
 import { Link } from "react-router-native";
+import axios from 'axios';
+
+const API = "http://192.168.0.7:5000/film/";
 
 export default class SendTickets extends Component {
   constructor(props) {
       super(props);
       this.state = {
-
+        correo: '',
+        sala: '',
+        pelicula: '',
+        horario: '',
+        boletos: ''
       };
+  }
+
+  handleCorreo = text => {
+    this.setState({ correo: text });
+  };
+
+  saveData = () => {
+    this.post = {
+        datos: {
+          correo: this.state.correo,
+          sala: this.state.sala,
+          pelicula: this.state.pelicula,
+          horario: this.state.horario,
+          boletos: this.state.boletos
+        }
+    }
+
+    if (this.post.datos.correo === "") {
+      alert("Complete Los Campos");
+    } else {
+      axios.post(API+"send_mail", this.post)
+      .then(response => {
+        if ( response.data.ok === true ) {
+          alert("Correo Enviado!")
+        }
+      })
+      .catch(error => {
+        alert(error)
+      })
+    }
+  };
+
+  asyncstorageClear = async () => {
+    try {
+      await AsyncStorage.clear()
+    } catch (e) {
+      alert(e)
+    }
   }
 
   render() {
@@ -19,24 +64,25 @@ export default class SendTickets extends Component {
             <Text style={ styles.header }>Enviar Boletos</Text>
           </View>
 
-          <Card title="Dirección de Correo Electrónico">
+          <Card title="Correco ELectronico">
             <TextInput 
               placeholder="user@gmail.com"  
               underlineColorAndroid='transparent'  
               style={styles.TextInputStyle}  
               keyboardType={'default'}
+              onChangeText={ this.handleCorreo }
             />
           </Card>
 
             <TouchableHighlight>
-              <Link to="/" style={ styles.button }>
+              <Link to="/" style={ styles.button } onPress={ () => this.asyncstorageClear() }>
                 <Text>Cartelera</Text>
               </Link>
             </TouchableHighlight>
 
             <TouchableHighlight>
-              <Link to="/buy_tickets" style={ styles.button }>
-                <Text>Volver</Text>
+              <Link to="/" style={ styles.button } onPress={ () => this.saveData() }>
+                <Text>Enviar Comprobante</Text>
               </Link>
             </TouchableHighlight>
         </View>
