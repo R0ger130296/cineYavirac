@@ -5,7 +5,7 @@ import Sidebar from '../components/sidebar';
 import Header from '../components/header';
 import axios from 'axios';
 
-const API = "http://localhost:5000/film/sala";
+const API = "http://localhost:5000/cine/sala";
 
 class Rooms extends Component {
     handleOpenModal (id) { this.setState({ showModal: true, test: id }) }

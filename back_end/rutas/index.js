@@ -6,6 +6,7 @@ const horario = require('../controllers/horarioCRUD');
 const pelicula = require('../controllers/peliculaCRUD');
 const persona = require('../controllers/personaCRUD');
 const sala = require('../controllers/salaCRUD');
+const raw = require('../controllers/raw');
 const sala_pelicula = require('../controllers/sala_peliculaCRUD');
 
 const router = Router();
@@ -44,4 +45,6 @@ router.post('/sala_pelicula', sala_pelicula.postData);
 router.put('/sala_pelicula', sala_pelicula.putData);
 router.delete('/sala_pelicula', sala_pelicula.deleteData);
 
+router.get('/query1', raw.query1);
+router.get('/query2', raw.query1);
 module.exports = router;

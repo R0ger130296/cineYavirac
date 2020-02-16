@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/film", routes);
+app.use("/cine", routes);
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto: ${ PORT }`);

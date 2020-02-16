@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-const API_URL = "http://localhost:5000/film/persona";
+const API_URL = "http://localhost:5000/cine/persona";
 
 class Register extends Component {
   constructor(props){

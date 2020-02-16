@@ -4,7 +4,7 @@ import Sidebar from '../components/sidebar';
 import Header from '../components/header';
 import axios from 'axios';
 
-const API = "http://localhost:5000/film/pelicula";
+const API = "http://localhost:5000/cine/pelicula";
 
 class AddMovie extends Component {
     constructor(props) {

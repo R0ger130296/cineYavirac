@@ -4,7 +4,7 @@ import { Card } from 'react-native-elements';
 import { Link } from "react-router-native";
 import axios from 'axios';
 
-const API = "http://192.168.0.7:5000/film/";
+const API = "http://192.168.0.7:5000/cine/";
 
 export default class BuyTickets extends Component {
   constructor(props) {
@@ -87,16 +87,16 @@ export default class BuyTickets extends Component {
       <ImageBackground style={ styles.container } source={ require('../../assets/bg.jpg') }>
         <View style={ styles.overlayContainer}>
           <View style={ styles.top }>
-            <Text style={ styles.header }>COMPRAR</Text>
+            <Text style={ styles.header }>Comprar</Text>
           </View>
 
           <ScrollView vertical={true}>
             { pelicula.map( element => 
               <Card key={ element.id } title={ element.titulo } image={require('../../assets/film_default.png')}>
-                <Text style={{marginBottom: 10}}>
+                <Text style={{marginBottom: 8}}>
                   Resumen: { element.resumen }
                 </Text>
-                <Text style={{marginBottom: 10}}>
+                <Text style={{marginBottom: 8}}>
                   Categoría: { element.categoria }
                 </Text>
                 <Text style={{marginBottom: 10}}>

@@ -4,7 +4,7 @@ import { Card } from 'react-native-elements';
 import { Link } from "react-router-native";
 import axios from 'axios';
 
-const API = "http://192.168.0.7:5000/film/";
+const API = "http://192.168.0.7:5000/cine/";
 
 export default class SendTickets extends Component {
   constructor(props) {
@@ -33,7 +33,12 @@ export default class SendTickets extends Component {
         }
     }
 
-    if (this.post.datos.correo === "") {
+    if (this.post.datos.correo === ""||
+    this.post.datos.sala === "" ||
+    this.post.datos.pelicula === "" ||
+    this.post.datos.horario === ""||
+    this.post.datos.boletos === ""
+    ) {
       alert("Complete Los Campos");
     } else {
       axios.post(API+"send_mail", this.post)

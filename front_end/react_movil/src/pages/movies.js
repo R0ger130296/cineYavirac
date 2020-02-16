@@ -4,7 +4,7 @@ import { Link } from "react-router-native";
 import { Card } from 'react-native-elements';
 import axios from 'axios';
 
-const API = "http://192.168.0.7:5000/film/pelicula";
+const API = "http://192.168.0.7:5000/cine/pelicula";
 
 
 export default class Movies extends Component {

@@ -4,9 +4,9 @@ import Sidebar from '../components/sidebar';
 import Header from '../components/header';
 import axios from 'axios';
 
-const API = "http://localhost:5000/film/sala_pelicula";
+const API = "http://localhost:5000/cine/sala_pelicula";
 
-class FilmsRoom extends Component {
+class cinesRoom extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -36,7 +36,7 @@ class FilmsRoom extends Component {
         axios.delete(`${ API }?id=${ value }`, {
             data: { id: value }
         })
-        window.location.assign("http://localhost:3000/films_room");
+        window.location.assign("http://localhost:3000/cines_room");
     }
 
     render() {
@@ -50,7 +50,7 @@ class FilmsRoom extends Component {
                     <main className="my-8">
                         <div className="justify-center my-5 select-none flex">
                             <p className="mt-5 text-center mr-10 text-2xl">Asignar Películas</p>
-                            <button onClick={() => window.location.assign("http://localhost:3000/films_room_add")} type="button" className="mr-8 shadow-md no-underline font-black text-2xl rounded-full h-12 w-12 flex items-center justify-center bg-blue-400 text-white text-sm border-blue btn-primary hover:text-white hover:bg-pink-500 focus:outline-none active:shadow-none">
+                            <button onClick={() => window.location.assign("http://localhost:3000/cines_room_add")} type="button" className="mr-8 shadow-md no-underline font-black text-2xl rounded-full h-12 w-12 flex items-center justify-center bg-blue-400 text-white text-sm border-blue btn-primary hover:text-white hover:bg-pink-500 focus:outline-none active:shadow-none">
                                 <i className="fas fa-plus"></i>
                             </button>
                         </div>  
@@ -90,4 +90,4 @@ class FilmsRoom extends Component {
     }
 }
 
-export default FilmsRoom;
+export default cinesRoom;

@@ -5,7 +5,7 @@ import Sidebar from '../components/sidebar';
 import Header from '../components/header';
 import axios from 'axios';
 
-const API = "http://localhost:5000/film/horario";
+const API = "http://localhost:5000/cine/horario";
 
 class Schedules extends Component {
     handleOpenModal () { this.setState({ showModal: true }) }      
