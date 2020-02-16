@@ -92,7 +92,7 @@ class Register extends Component {
                 </button>
                 <hr className="mb-6 border-t" />
                 <div className="text-center">
-                  <a href="http://localhost:3001/" className="bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline text-white font-bold py-2 px-4 rounded">
+                  <a href="http://localhost:3000/" className="bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline text-white font-bold py-2 px-4 rounded">
                     Volver
                 </a>
                 </div>
