@@ -4,7 +4,9 @@ import { Card } from 'react-native-elements';
 import { Link } from "react-router-native";
 import axios from 'axios';
 
-const API = "http://192.168.0.8:5000/film/";
+// const API = "http://192.168.0.8:5000/film/";
+const API = "http://192.168.1.23:5000/film/";
+
 
 
 export default class SendTickets extends Component {
@@ -129,14 +131,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(47,163,218, .4)',
   },
   top: {
-    height: '20%',
+    height: '40%',
     alignItems: 'center',
     justifyContent: 'center',
   },
   header: {
     color: '#fff',
     fontSize: 28,
-    borderColor: '#fff',
+    borderColor: 'blue',
+    borderRadius: 50,
     borderWidth: 2,
     padding: 10,
     paddingLeft: 40,
@@ -146,13 +149,16 @@ const styles = StyleSheet.create({
   },
   button: {
     position: 'relative',
-    bottom: '0%',
-    marginBottom: 20,
-    borderRadius: 100,
-    backgroundColor: '#fff',
-    paddingHorizontal: 20,
+    bottom: '-4%',
+    marginBottom: 5,
+    borderWidth: 2,
+    borderWidth: 2,
+    borderRadius: 50,
+    paddingHorizontal: 10,
     paddingVertical: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'rgba(255,255,255, .2)',
+    borderColor: '#fff',
   },
 })

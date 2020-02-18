@@ -39,7 +39,7 @@ class Login extends Component {
       <div className="container mx-auto">
       <div className="flex justify-center px-12 my-12">
         <div className="w-full xl:w-3/4 xl:w-11/12 flex">
-        <img className="h-700 mx:w-30 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src="https://lh6.googleusercontent.com/proxy/sDIljM0HaR_2OAQtVOYD2P5jl0Enq0QdtMekJ5-Q-jwSJgHXn0dxU2khnYfsM43rs-lGolADSC-hqbCV4tpVg3rrACqvJV_0gmKliCSqHtTyWWcYCexd9f69Q-Kyp2t5Em7PxM14fUYORatP" alt="Sunset in the mountains"/>
+        <img className="h-700 mx:w-30 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" src="https://lh6.googleusercontent.com/proxy/sDIljM0HaR_2OAQtVOYD2P5jl0Enq0QdtMekJ5-Q-jwSJgHXn0dxU2khnYfsM43rs-lGolADSC-hqbCV4tpVg3rrACqvJV_0gmKliCSqHtTyWWcYCexd9f69Q-Kyp2t5Em7PxM14fUYORatP" alt="Cinema"/>
           <div className="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
             <h3 className="pt-4 text-2xl text-center">Bienvenido de vuelta!</h3>
             <form onSubmit={this.loginAccess} className="px-8 pt-6 pb-8 mb-4 bg-white rounded">

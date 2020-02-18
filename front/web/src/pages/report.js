@@ -19,9 +19,14 @@ export default class Report extends Component {
         pelicula: 'Película',
         boletos: 'Número de Boletos',
         precio: 'precio unitario',
+        total: 'precio total',
       },
       reporte: [],
-      peliculas: [],
+      compras: [],
+      pelicula:"",
+      boletos:"",
+      precio:"",
+      total:"",
     };
   }
 
@@ -33,9 +38,9 @@ export default class Report extends Component {
     .catch(error => {
       console.log(error)
     })
-    axios.get(`${API}pelicula`)
+    axios.get(`${API}raw`)
     .then(response => {
-      this.setState({ peliculas: response.data.datos })
+      this.setState({ compras: response.data.datos })
       console.log(response.data.datos)
     })
     .catch(error => {
@@ -44,7 +49,7 @@ export default class Report extends Component {
   }
 
   render() {
-    const { reporte } = this.state
+    const {compras}=this.state;
     const datos = {
       chart: {
         caption: "Porcentaje de Ventas",
@@ -66,10 +71,10 @@ export default class Report extends Component {
     };
 
     const chartConfigs = {
-      type: 'doughnut2d',
+      type: 'pie3d',
       dataSource: datos,
-      width: "800",
-      height: "600",
+      width: "700",
+      height: "580",
     };
     // return (<ReactFusioncharts {...chartConfigs} />);
     return(
@@ -86,16 +91,23 @@ export default class Report extends Component {
                           <th className="text-left p-3 px-5">{ this.state.table_header.pelicula }</th>
                           <th className="text-left p-3 px-5">{ this.state.table_header.boletos }</th>
                           <th className="text-left p-3 px-5">{ this.state.table_header.precio }</th>
+                          <th className="text-left p-3 px-5">{ this.state.table_header.total }</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr className="border-b hover:bg-orange-100 bg-gray-100">
+                        <tr className="border-b hover:bg-red-100 bg-gray-100">
                           <td>
-                              { reporte.map(element => <p className="p-2 px-5" key={ element.id }> {element.label} </p>) }
+                              { compras.map(element => <p className="p-2 px-5" key={ element.id }> {element.label} </p>) }
                           </td>
                           <td>
-                              { reporte.map(element => <p className="p-2 px-5" key={ element.id }> {element.value} </p>) }
+                              { compras.map(element => <p className="p-2 px-5" key={ element.id }> {element.value} </p>) }
+                          </td>
+                          <td>
+                              { compras.map(element => <p className="p-2 px-5" key={ element.id }> {element.valorBoleto} </p>) }
+                          </td>
+                          <td>
+                              { compras.map(element => <p className="p-2 px-5" key={ element.id }> {element.total} </p>) }
                           </td>
                         </tr>
                     </tbody>

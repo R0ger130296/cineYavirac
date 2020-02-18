@@ -4,7 +4,9 @@ import { Link } from "react-router-native";
 import { Card } from 'react-native-elements';
 import axios from 'axios';
 
-const API = "http://192.168.0.8:5000/film/pelicula";
+// const API = "http://192.168.0.8:5000/film/pelicula";
+const API = "http://192.168.1.23:5000/film/pelicula";
+
 
 export default class Movies extends Component {
     constructor(props) {
@@ -38,7 +40,7 @@ export default class Movies extends Component {
             <ImageBackground style = { styles.container } source = { require('../../assets/bg.jpg') } >
                 <View style = { styles.overlayContainer } >
                     <View style = { styles.top } >
-                        <Text style = { styles.header } > CARTELERA </Text>   
+                        <Text style = { styles.header } > ESTRENOS </Text>   
                     </View >
 
                     <ScrollView vertical = { true } > 
@@ -58,7 +60,7 @@ export default class Movies extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: -1,
         width: '100%',
         height: '100%',
     },
@@ -67,14 +69,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(47,163,218, .4)',
     },
     top: {
-        height: '20%',
+        height: '40%',
         alignItems: 'center',
         justifyContent: 'center',
     },
     header: {
         color: '#fff',
         fontSize: 28,
-        borderColor: '#fff',
+        borderRadius: 50,
+        borderColor: 'blue',
         borderWidth: 2,
         padding: 20,
         paddingLeft: 40,
@@ -82,8 +85,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,255,255, .1)',
     },
     menuContainer: {
-        height: '40%',
-        // flexDirection: 'row',
-        // flexWrap: 'wrap',
+        height: '90%',
     }
 })
