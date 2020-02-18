@@ -104,7 +104,7 @@ export default class BuyTickets extends Component {
 
           <ScrollView vertical={true}>
             { pelicula.map( element => 
-              <Card key={ element.id } title={ element.titulo } image={require('../../assets/film_default.jpg')}>
+              <Card key={ element.id } title={ element.titulo } iimage={{uri:`${element.imagen}`}}>
                 <Text style={{marginBottom: 10}}>
                   Resumen: { element.resumen }
                 </Text>

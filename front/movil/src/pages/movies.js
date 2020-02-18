@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ImageBackground, StyleSheet, ScrollView, AsyncStorage } from 'react-native';
+import { Text, View, ImageBackground, StyleSheet, ScrollView, AsyncStorage, Image } from 'react-native';
 import { Link } from "react-router-native";
 import { Card } from 'react-native-elements';
 import axios from 'axios';
@@ -20,6 +20,7 @@ export default class Movies extends Component {
         axios.get(API)
             .then(response => {
                 this.setState({ peliculas: response.data.datos })
+        //    alert(JSON.stringify(response.data.datos[0]))
             })
             .catch(error => {
                 console.log(error)
@@ -47,7 +48,8 @@ export default class Movies extends Component {
                     {
                         peliculas.map(element =>
                             <Link to = "/movie_detail" key = { element.id } onPress={ () => this.asyncstorageSave(element.id) }>
-                                <Card title = { element.titulo } image = { require('../../assets/film_default.jpg') } />  
+                                <Card title = { element.titulo } image={{uri:`${element.imagen}`}}/>
+                                {/* <Image  source={`${element.imagen}`}/> */}
                             </Link >
                         )
                     } 

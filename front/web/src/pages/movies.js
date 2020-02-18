@@ -33,7 +33,6 @@ class Movies extends Component {
 
     render() {
         const { peliculas } = this.state
-        const image_cover = require('../assets/film_default.jpg');
         const image_categorie = require('../assets/category.png');
 
         return(
@@ -47,7 +46,7 @@ class Movies extends Component {
                     <div className="flex flex-wrap items-center justify-center">
                     { peliculas.map(element => 
                         <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden" key={ element.id }>
-                            <img className="block mx-auto sm:mx-0 sm:flex-shrink-0 h-16 sm:h-24 rounded-full" src={ image_cover } alt="image_cover" />
+                            <img className="block mx-auto sm:mx-0 sm:flex-shrink-0 h-16 sm:h-24 rounded-full" src={ element.imagen }/>
                             <div className="border-r border-b border-l border-grey-light lg:border-l-0 lg:border-t lg:border-grey-light bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                                 <div className="sm:flex sm:items-center px-6 py-4">
                                     <img className="w-10 h-10 rounded-full mr-4" src={ image_categorie } alt="image_categorie" />

@@ -9,7 +9,7 @@ const sendMail = (req, res) => {
         secure: true, // use SSL
         auth: {
             user: 'grarogccee@gmail.com',
-            pass: 'r0ger130296'
+            pass: '1723603997R'
         }
     });
     const mailOptions = {
